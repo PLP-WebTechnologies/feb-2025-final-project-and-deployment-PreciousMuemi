@@ -1,0 +1,24 @@
+{
+  "name": "advanced-blog",
+  "version": "1.0.0",
+  "description": "A stunning, multi-page, responsive blog website simulating a modern blogging platform.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'No build step required for static site.'"
+  },
+  "keywords": [
+    "blog",
+    "frontend",
+    "responsive",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

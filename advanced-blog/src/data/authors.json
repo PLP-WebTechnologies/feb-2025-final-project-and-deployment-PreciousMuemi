@@ -1,0 +1,24 @@
+Sure, here's the contents for the file: /advanced-blog/advanced-blog/src/data/authors.json
+
+[
+    {
+        "name": "Jane Doe",
+        "bio": "A passionate writer and tech enthusiast. Loves to explore new technologies and share insights through her blog.",
+        "profileImage": "https://via.placeholder.com/150?text=Jane+Doe"
+    },
+    {
+        "name": "John Smith",
+        "bio": "An avid traveler and food lover. Enjoys documenting his adventures and culinary experiences.",
+        "profileImage": "https://via.placeholder.com/150?text=John+Smith"
+    },
+    {
+        "name": "Emily Johnson",
+        "bio": "A creative designer and storyteller. Focuses on design trends and personal growth topics.",
+        "profileImage": "https://via.placeholder.com/150?text=Emily+Johnson"
+    },
+    {
+        "name": "Michael Brown",
+        "bio": "A software developer with a knack for writing. Shares coding tips and project experiences.",
+        "profileImage": "https://via.placeholder.com/150?text=Michael+Brown"
+    }
+]

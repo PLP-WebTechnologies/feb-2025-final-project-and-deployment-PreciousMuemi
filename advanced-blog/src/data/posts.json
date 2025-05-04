@@ -1,0 +1,44 @@
+Sure, here's the proposed content for the file `/advanced-blog/src/data/posts.json`:
+
+[
+    {
+        "id": 1,
+        "title": "A Deep Dive into Something Cool",
+        "author": "Author Name",
+        "date": "2023-10-27",
+        "content": "This is a brief excerpt introducing the blog post content. This should be engaging enough to make the user want to click and read more...",
+        "image": "https://via.placeholder.com/400x250?text=Blog+Image"
+    },
+    {
+        "id": 2,
+        "title": "Exploring the Latest Trends in Technology",
+        "author": "Tech Guru",
+        "date": "2023-10-20",
+        "content": "In this post, we explore the latest trends in technology that are shaping our future. From AI to blockchain, discover what's next.",
+        "image": "https://via.placeholder.com/400x250?text=Tech+Trends"
+    },
+    {
+        "id": 3,
+        "title": "Lifestyle Changes for a Healthier You",
+        "author": "Wellness Coach",
+        "date": "2023-10-15",
+        "content": "This article discusses various lifestyle changes that can lead to a healthier and happier life. Simple tips that can make a big difference.",
+        "image": "https://via.placeholder.com/400x250?text=Lifestyle+Changes"
+    },
+    {
+        "id": 4,
+        "title": "The Art of Minimalism in Daily Life",
+        "author": "Minimalist Blogger",
+        "date": "2023-10-10",
+        "content": "Discover how minimalism can simplify your life and bring more joy. Practical tips for decluttering your space and mind.",
+        "image": "https://via.placeholder.com/400x250?text=Minimalism"
+    },
+    {
+        "id": 5,
+        "title": "Traveling on a Budget: Tips and Tricks",
+        "author": "Travel Enthusiast",
+        "date": "2023-10-05",
+        "content": "Learn how to travel the world without breaking the bank. Essential tips for budget-friendly travel experiences.",
+        "image": "https://via.placeholder.com/400x250?text=Budget+Travel"
+    }
+]

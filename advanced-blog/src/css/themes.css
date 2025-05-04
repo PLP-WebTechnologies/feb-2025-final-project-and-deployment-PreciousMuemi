@@ -1,0 +1,34 @@
+
+
+:root {
+    --primary-color: #ff6f20; /* Orange */
+    --secondary-color: #000000; /* Black */
+    --background-color-light: #ffffff; /* Light background */
+    --background-color-dark: #121212; /* Dark background */
+    --text-color-light: #000000; /* Light text */
+    --text-color-dark: #ffffff; /* Dark text */
+    --accent-color: #ffcc00; /* Accent color for highlights */
+}
+
+body.light-mode {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+}
+
+body.dark-mode {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: var(--text-color-dark);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+}

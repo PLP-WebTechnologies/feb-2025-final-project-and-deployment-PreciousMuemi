@@ -1,0 +1,82 @@
+/* Responsive styles for the advanced blog layout */
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px; /* Base font size for mobile */
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack navigation items */
+        align-items: center;
+    }
+
+    .blog-posts {
+        flex-direction: column; /* Stack blog posts */
+    }
+
+    .sidebar {
+        display: none; /* Hide sidebar on mobile */
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    body {
+        font-size: 18px; /* Base font size for tablet */
+    }
+
+    header {
+        padding: 15px;
+    }
+
+    nav ul {
+        flex-direction: row; /* Horizontal navigation */
+        justify-content: space-around;
+    }
+
+    .blog-posts {
+        flex-direction: row; /* Side by side blog posts */
+    }
+
+    .sidebar {
+        display: block; /* Show sidebar on tablet */
+        width: 30%; /* Sidebar width */
+    }
+
+    .main-content {
+        width: 70%; /* Main content width */
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 1025px) {
+    body {
+        font-size: 20px; /* Base font size for desktop */
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    nav ul {
+        justify-content: flex-start; /* Align navigation to the left */
+    }
+
+    .blog-posts {
+        flex-wrap: wrap; /* Allow wrapping of blog posts */
+    }
+
+    .sidebar {
+        display: block; /* Show sidebar on desktop */
+        width: 25%; /* Sidebar width */
+    }
+
+    .main-content {
+        width: 75%; /* Main content width */
+    }
+}

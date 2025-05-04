@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Profile - Your Advanced Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="../index.html">Your Advanced Blog</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../pages/about.html">About</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Contribute</a></li>
+                    <li>
+                        <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                            ☀️
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="author-profile">
+            <h2>Author Name</h2>
+            <img src="../assets/icons/author-placeholder.png" alt="Author Profile Image" class="author-image">
+            <p class="author-bio">This is a brief bio about the author. It can include their background, interests, and writing style.</p>
+        </section>
+
+        <section class="author-posts">
+            <h3>Posts by Author</h3>
+            <div id="posts-list" class="posts-grid">
+                <!-- Blog post cards will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Your Advanced Blog. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/components/postCard.js"></script>
+</body>
+</html>
