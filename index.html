@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Advanced Blog - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Welcome to the advanced blog platform.">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">Your Advanced Blog</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contribute</a></li>
+                    <li>
+                        <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                            ☀️
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="blog-posts">
+            <h2>Latest Articles</h2>
+            <div id="posts-list" class="posts-grid">
+                <article class="post-preview">
+                    <figure>
+                        <a href="post.html?id=1">
+                            <img src="https://via.placeholder.com/400x250?text=Blog+Image" alt="Placeholder blog post image">
+                        </a>
+                         </figure>
+                    <div class="post-info">
+                        <h3><a href="post.html?id=1">A Deep Dive into Something Cool</a></h3>
+                        <p class="post-meta">By <a href="#">Author Name</a> on <time datetime="2023-10-27">October 27, 2023</time></p>
+                        <p>A brief excerpt introducing the blog post content. This should be engaging enough to make the user want to click and read more...</p>
+                    </div>
+                </article>
+                </div>
+        </section>
+
+        <aside class="sidebar">
+             <div class="about-author">
+                <h3>About This Blog</h3>
+                <p>This is a demo of an advanced frontend blog platform.</p>
+            </div>
+            <div class="categories">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Lifestyle</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                </ul>
+            </div>
+        </aside>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Your Advanced Blog. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "A Deep Dive into Something Cool",
+        "author": "Precious Muemi",
+        "date": "2023-10-27T10:00:00Z",
+        "category": "Technology",
+        "featureImage": "https://via.placeholder.com/800x400?text=Deep+Dive+Feature",
+        "excerpt": "Explore the fascinating depths of a cutting-edge technology that's changing the world...",
+        "content": "<p>This is the full content of the first blog post. It contains detailed information about the topic discussed.</p>\n\n<h3>Section Header</h3>\n\n<p>Here's another paragraph. You can include <strong>bold</strong> text, <em>italic</em> text, and links like <a href='https://example.com'>Example Link</a>.</p>\n\n<figure class=\"embedded-image\">\n<img src=\"https://via.placeholder.com/600x350?text=Post+Image+1\" alt=\"An image embedded in the post.\">\n<figcaption>A caption for the embedded image.</figcaption>\n</figure>\n\n<p>You can also embed audio:</p>\n\n<figure class=\"embedded-audio\">\n<audio controls>\n<source src=\"your-audio-file.mp3\" type=\"audio/mpeg\">\nYour browser does not support the audio element.\n</audio>\n<figcaption>Listen to some audio.</figcaption>\n</figure>\n\n<p>And continue with more content, maybe lists:</p>\n\n<ul>\n<li>List item 1</li>\n<li>List item 2</li>\n<li>List item 3</li>\n</ul>\n\n<p>Remember to style all these elements in your CSS!</p>"
+    },
+    {
+        "id": 2,
+        "title": "Mastering CSS Grid for Layouts",
+        "author": "Another Author",
+        "date": "2023-10-25T12:00:00Z",
+        "category": "Tutorials",
+        "featureImage": "https://via.placeholder.com/800x400?text=CSS+Grid+Tutorial",
+        "excerpt": "Unlock the power of CSS Grid to create complex and responsive layouts with ease...",
+        "content": "<p>Content for the CSS Grid tutorial...</p>"
+    }
+    // Add more post objects here
+]

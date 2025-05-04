@@ -1,0 +1,338 @@
+/* Basic Reset or Normalize (Add more as needed) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Use your chosen font */
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+}
+
+/* CSS Variables for Theming */
+:root {
+    /* Light Theme (Default) */
+    --background-color: #ffffff;
+    --text-color: #333;
+    --primary-color: #ff8c00; /* Dark Orange */
+    --secondary-color: #000; /* Black */
+    --card-background: #f4f4f4;
+    --border-color: #ddd;
+    --link-color: var(--primary-color);
+    --link-hover-color: #cc7000; /* Slightly darker orange */
+    --header-background: var(--secondary-color);
+    --header-text-color: #fff;
+    --footer-background: var(--secondary-color);
+    --footer-text-color: #ccc;
+}
+
+.dark-theme {
+    --background-color: #1a1a1a; /* Dark background */
+    --text-color: #e0e0e0; /* Light text */
+    --primary-color: #ff8c00; /* Still orange */
+    --secondary-color: #f4f4f4; /* Light grey as secondary */
+    --card-background: #2a2a2a;
+    --border-color: #555;
+    --link-color: var(--primary-color);
+    --link-hover-color: #ffab40; /* Lighter orange */
+    --header-background: #0d0d0d; /* Even darker header */
+    --header-text-color: #fff;
+    --footer-background: #0d0d0d;
+    --footer-text-color: #bbb;
+}
+
+/* Apply variables */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+header, footer {
+    background-color: var(--header-background); /* Using header var for footer too, adjust if needed */
+    color: var(--header-text-color);
+    padding: 1rem 0;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px; /* Max width for content */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Header Styles */
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+header h1 a {
+    color: var(--header-text-color); /* H1 link color */
+    text-decoration: none;
+    font-size: 1.8rem;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem; /* Space between nav items */
+    align-items: center;
+}
+
+header nav a {
+     color: var(--header-text-color);
+     font-weight: bold;
+     padding: 0.5rem 0; /* Add padding for click area */
+     display: block; /* Make link fill padding */
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0;
+    color: var(--header-text-color); /* Adjust color if needed */
+    transition: transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+
+/* Main Layout - Using Grid for Homepage */
+main.container {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack by default */
+    gap: 2rem; /* Gap between main content and sidebar */
+    padding: 2rem 0;
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+    main.container {
+        grid-template-columns: 2fr 1fr; /* Content + Sidebar */
+    }
+}
+
+/* Blog Posts Section */
+.blog-posts h2 {
+    margin-bottom: 1.5rem;
+    color: var(--primary-color); /* Highlight section title */
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid of posts */
+    gap: 2rem; /* Gap between post cards */
+}
+
+.post-preview {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden; /* Hide overflow for rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Stack image and info */
+}
+
+.post-preview:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.post-preview figure {
+     margin: 0; /* Remove default figure margin */
+}
+
+.post-preview img {
+    width: 100%;
+    height: 200px; /* Fixed height for image */
+    object-fit: cover; /* Cover the area without distorting */
+    display: block;
+}
+
+.post-preview .post-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow info section to take up remaining space */
+}
+
+.post-preview h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.post-preview h3 a {
+     color: var(--text-color); /* Make title link color match text */
+}
+.post-preview h3 a:hover {
+     color: var(--primary-color); /* Change title link color on hover */
+     text-decoration: none; /* Avoid underline if you want just color change */
+}
+
+
+.post-preview .post-meta {
+    font-size: 0.9rem;
+    color: #666; /* Softer color for meta info */
+     margin-bottom: 1rem;
+}
+.dark-theme .post-preview .post-meta {
+    color: #bbb; /* Adjust meta color for dark theme */
+}
+
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin-bottom: 0.8rem;
+}
+
+.sidebar a {
+    color: var(--text-color);
+}
+.sidebar a:hover {
+    color: var(--primary-color);
+}
+
+
+/* Individual Post Page Styles */
+.blog-post {
+    /* No border/background needed if it's the main content in the container */
+    padding: 2rem 0; /* Padding within the main content area */
+}
+
+.blog-post header h2 {
+     font-size: 2.5rem;
+     margin-bottom: 0.5rem;
+     color: var(--text-color); /* Post title color */
+}
+
+.blog-post .post-meta {
+     font-size: 1rem;
+     color: #666;
+     margin-bottom: 2rem;
+}
+.dark-theme .blog-post .post-meta {
+    color: #bbb; /* Adjust meta color for dark theme */
+}
+
+
+.blog-post figure img#post-feature-image {
+     width: 100%;
+     max-height: 400px; /* Max height for feature image */
+     object-fit: cover;
+     margin-bottom: 1.5rem;
+     border-radius: 8px; /* Optional: Rounded corners for images */
+}
+
+.post-body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* Style for content within the post body */
+.post-body p {
+    margin-bottom: 1.5rem;
+}
+.post-body h3 {
+     font-size: 1.8rem;
+     margin-top: 2rem;
+     margin-bottom: 1rem;
+     color: var(--primary-color); /* Section titles within post */
+}
+.post-body img {
+    max-width: 100%; /* Ensure images don't overflow */
+    height: auto;
+    display: block; /* Remove extra space below image */
+    margin: 1.5rem auto; /* Center images within content */
+    border-radius: 8px; /* Optional: Rounded corners */
+}
+.post-body figure {
+    margin: 1.5rem 0; /* Space around figures */
+}
+.post-body figcaption {
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+.dark-theme .post-body figcaption {
+     color: #ccc;
+}
+
+.post-body audio {
+    display: block;
+    margin: 1.5rem auto;
+    width: 100%; /* Or a max-width */
+}
+
+
+/* Footer Styles */
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+     font-size: 0.9rem;
+     color: var(--footer-text-color);
+}
+
+footer a {
+     color: var(--footer-text-color);
+     text-decoration: none;
+     margin-left: 1rem;
+}
+
+footer a:hover {
+     text-decoration: underline;
+     color: #fff; /* Lighter color on hover */
+}
+
+/* Add more styles for:
+    - Playful/Colorful theme variables and toggle logic (in JS)
+    - Smooth transitions/animations (CSS `transition` property, potentially JS for scroll effects)
+    - More detailed styling for post previews, sidebar, etc.
+    - Styling for comments section
+    - Forms (if you add a contact or simulated comment form)
+    - Specific styling for different HTML elements within post content (blockquote, code, lists, tables)
+*/

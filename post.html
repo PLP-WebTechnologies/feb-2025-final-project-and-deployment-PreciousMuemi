@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="post-title-tag">Loading Post...</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+     <meta name="description" content="Read a specific blog post on the advanced blog platform.">
+</head>
+<body>
+    <header>
+         <div class="container">
+            <h1><a href="index.html">Your Advanced Blog</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">About</a></li>
+                     <li><a href="#">Contribute</a></li>
+                    <li>
+                        <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                            ☀️
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="blog-post">
+            <header>
+                <h2 id="post-headline">Post Title Loading...</h2>
+                <p class="post-meta">By <span id="post-author"><a href="#">Author Name</a></span> on <time id="post-date" datetime=""></time></p>
+                <figure>
+                     <img id="post-feature-image" src="https://via.placeholder.com/800x400?text=Feature+Image" alt="Feature image for the post">
+                    </figure>
+            </header>
+
+            <div id="post-content" class="post-body">
+                <p>Loading post content...</p>
+
+                 <h3>Embedding an Image</h3>
+                 <figure class="embedded-image">
+                     <img src="https://via.placeholder.com/600x350?text=Embedded+Image" alt="An image embedded within the post.">
+                     <figcaption>A caption for the embedded image.</figcaption>
+                 </figure>
+
+                 <h3>Embedding Audio</h3>
+                 <figure class="embedded-audio">
+                      <audio controls>
+                        <source src="your-audio-file.mp3" type="audio/mpeg">
+                         Your browser does not support the audio element.
+                      </audio>
+                      <figcaption>Listen to some audio.</figcaption>
+                 </figure>
+
+                 <p>Continue reading the post...</p>
+            </div>
+
+            <footer>
+                 <section class="comments">
+                    <h3>Comments (Simulated)</h3>
+                    <div class="comment">
+                        <p class="comment-meta"><strong>Commenter Name</strong> on <time datetime="2023-10-27">October 27, 2023</time></p>
+                        <p>This is a simulated comment.</p>
+                    </div>
+                     <div class="comment">
+                        <p class="comment-meta"><strong>Another User</strong> on <time datetime="2023-10-28">October 28, 2023</time></p>
+                        <p>Great post!</p>
+                    </div>
+                     </section>
+            </footer>
+        </article>
+    </main>
+
+    <footer>
+         <div class="container">
+            <p>&copy; 2023 Your Advanced Blog. All rights reserved.</p>
+             <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+     <script src="js/script.js"></script>
+     <script src="js/post-loader.js"></script> </body>
+</html>
