@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Advanced Blog - Home</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/themes.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <meta name="description" content="Welcome to the advanced blog platform.">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>✨ Bloggy Blog ✨</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content="Welcome to Bloggy Blog - your Gen Z stylish blogging platform." />
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1><a href="index.html">Your Advanced Blog</a></h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="pages/about.html">About</a></li>
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="#">Contribute</a></li>
-                    <li>
-                        <button id="theme-toggle" aria-label="Toggle Dark Mode">
-                            ☀️
-                        </button>
-                    </li>
-                </ul>
-            </nav>
+        <div class="container header-container">
+            <h1><a href="index.html" class="logo">bloggy blog</a></h1>
+<nav>
+    <ul class="nav-list">
+        <li><a href="index.html">home</a></li>
+        <li><a href="pages/vibes.html">vibes</a></li>
+        <li><a href="pages/about.html">about us</a></li>
+        <li><a href="pages/spill-the-tea.html">spill the tea ☕</a></li>
+        <li>
+            <button id="theme-toggle" aria-label="Toggle Dark Mode" class="theme-toggle-btn">
+                🌙
+            </button>
+        </li>
+        <li>
+            <button id="playful-toggle" aria-label="Toggle Playful Mode" class="theme-toggle-btn">
+                🎨
+            </button>
+        </li>
+    </ul>
+</nav>
         </div>
     </header>
-
-    <main class="container">
+    <main class="container main-content">
         <section class="blog-posts">
             <h2>Latest Articles</h2>
             <div id="posts-list" class="posts-grid">
                 <!-- Blog post cards will be dynamically rendered here -->
             </div>
         </section>
-
         <aside class="sidebar">
             <div class="about-author">
                 <h3>About This Blog</h3>
-                <p>This is a demo of an advanced frontend blog platform.</p>
+                <p>This is a demo of an advanced frontend blog platform with Gen Z vibes.</p>
             </div>
             <div class="categories">
                 <h3>Categories</h3>
@@ -54,17 +60,15 @@
             </div>
         </aside>
     </main>
-
     <footer>
-        <div class="container">
-            <p>&copy; 2023 Your Advanced Blog. All rights reserved.</p>
+        <div class="container footer-container">
+            <p>&copy; 2023 Bloggy Blog. All rights reserved.</p>
             <div class="footer-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
             </div>
         </div>
     </footer>
-
     <script src="js/main.js"></script>
 </body>
 </html>

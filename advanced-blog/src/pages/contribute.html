@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blog Post - Bloggy Blog</title>
+    <title>Contribute - Bloggy Blog</title>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/themes.css" />
 </head>
@@ -17,36 +17,31 @@
                     <li><a href="../pages/vibes.html">vibes</a></li>
                     <li><a href="../pages/about.html">about us</a></li>
                     <li><a href="../pages/spill-the-tea.html">spill the tea ☕</a></li>
+                    <li><a href="../pages/contribute.html">contribute</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="container pages-container">
-        <article id="post-content" class="post-article">
-            <!-- Dynamic post content will be loaded here -->
-        </article>
+        <section class="contribute-section">
+            <h2>contribute a new blog post</h2>
+            <form id="contribute-form" class="form-styled">
+                <label for="post-title">title:</label>
+                <input type="text" id="post-title" name="post-title" required />
 
-        <section class="comments-section">
-            <h2>Comments</h2>
-            <div id="comments-list">
-                <!-- Comments will be dynamically loaded here -->
-            </div>
-            <form id="comment-form">
-                <h3>Add a Comment</h3>
-                <label for="comment-author">Name:</label>
-                <input type="text" id="comment-author" name="comment-author" required />
-                <label for="comment-text">Comment:</label>
-                <textarea id="comment-text" name="comment-text" rows="4" required></textarea>
-                <button type="submit">Post Comment</button>
+                <label for="post-author">author:</label>
+                <input type="text" id="post-author" name="post-author" required />
+
+                <label for="post-image">image url:</label>
+                <input type="url" id="post-image" name="post-image" placeholder="https://example.com/image.jpg" />
+
+                <label for="post-content">content:</label>
+                <textarea id="post-content" name="post-content" rows="8" required></textarea>
+
+                <button type="submit" class="btn-primary">submit post</button>
             </form>
-        </section>
-
-        <section class="share-section">
-            <h2>Share this post</h2>
-            <button id="share-twitter">Share on Twitter</button>
-            <button id="share-facebook">Share on Facebook</button>
-            <button id="share-linkedin">Share on LinkedIn</button>
+            <div id="form-message" role="alert" aria-live="polite" class="form-message"></div>
         </section>
     </main>
 
@@ -60,6 +55,6 @@
         </div>
     </footer>
 
-    <script src="../js/post.js"></script>
+    <script src="../js/contribute.js"></script>
 </body>
 </html>
