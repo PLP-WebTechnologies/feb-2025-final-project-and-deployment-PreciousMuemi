@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const content = form['post-content'].value.trim();
 
         if (!title || !author || !content) {
-            messageDiv.textContent = 'Please fill in all required fields.';
+            messageDiv.textContent = 'please fill in all required fields.';
             messageDiv.style.color = 'red';
             return;
         }
@@ -37,7 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Clear form and show success message
         form.reset();
-        messageDiv.textContent = 'Thank you for your contribution! Your post has been added.';
+        messageDiv.textContent = 'thank you for your contribution! your post has been added.';
         messageDiv.style.color = 'green';
+
+        // Redirect to homepage after short delay to show new post
+        setTimeout(() => {
+            window.location.href = '../index.html';
+        }, 2000);
     });
 });

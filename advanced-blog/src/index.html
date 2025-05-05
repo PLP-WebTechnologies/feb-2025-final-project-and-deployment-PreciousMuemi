@@ -3,72 +3,1159 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>✨ Bloggy Blog ✨</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/themes.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="description" content="Welcome to Bloggy Blog - your Gen Z stylish blogging platform." />
+    <title>bloggy blog | Home</title>
+    <style>
+        :root {
+            --primary-color: #9c5fff;
+            --secondary-color: #ff8024;
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --card-bg: #1e1e1e;
+            --hover-color: #b876ff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 1rem 0;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 0;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--hover-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background-color: var(--secondary-color);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--bg-color);
+            transition: transform 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(45deg);
+        }
+
+        .search-btn {
+            background-color: #ff8024;
+            color: var(--bg-color);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-left: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .search-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .search-box {
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            background-color: var(--card-bg);
+            border: 2px solid var(--primary-color);
+            border-radius: 30px;
+            color: var(--text-color);
+        }
+
+        .close-search {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: var(--text-color);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        .featured-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #333;
+        }
+
+        .tag:hover, .tag.active {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin: 3rem 0 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -10px;
+            left: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .post-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(156, 95, 255, 0.2);
+        }
+
+        .post-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .post-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-title {
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .post-title a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .post-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .post-excerpt {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            flex-grow: 1;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-top: auto;
+        }
+
+        .read-more {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: transform 0.3s, opacity 0.3s;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .read-more:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        .sidebar {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .sidebar h3::after {
+            content: '';
+            position: absolute;
+            width: 30%;
+            height: 3px;
+            bottom: -10px;
+            left: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .category-list li {
+            margin-bottom: 0.8rem;
+        }
+
+        .category-list li a {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+
+        .category-list li a:hover {
+            color: var(--primary-color);
+        }
+
+        .category-count {
+            background-color: #333;
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: 0.8rem;
+        }
+
+        footer {
+            background-color: #0a0a0a;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links li a {
+            color: var(--text-color);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s, color 0.3s;
+        }
+
+        .footer-links li a:hover {
+            opacity: 1;
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background-color: var(--primary-color);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 1rem;
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .newsletter-btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            opacity: 0.9;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .featured-post {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .featured-post-image {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .featured-post-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-post-title {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .featured-post-title a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .featured-post-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .featured-badge {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .right-column {
+            position: sticky;
+            top: 100px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .right-column {
+                position: static;
+            }
+            
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--card-bg);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                transition: right 0.3s;
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+            
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation classes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .animate-delay-1 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .animate-delay-2 {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        .animate-delay-3 {
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+        
+        /* Dark/Light theme toggle */
+        body.light-theme {
+            --bg-color: #f5f5f5;
+            --text-color: #222;
+            --card-bg: #ffffff;
+        }
+
+        /* Modal styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 2000;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            transform: translateY(-50px);
+            transition: transform 0.3s;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="container header-container">
-            <h1><a href="index.html" class="logo">bloggy blog</a></h1>
-<nav>
-    <ul class="nav-list">
-        <li><a href="index.html">home</a></li>
-        <li><a href="pages/vibes.html">vibes</a></li>
-        <li><a href="pages/about.html">about us</a></li>
-        <li><a href="pages/spill-the-tea.html">spill the tea ☕</a></li>
-        <li>
-            <button id="theme-toggle" aria-label="Toggle Dark Mode" class="theme-toggle-btn">
-                🌙
-            </button>
-        </li>
-        <li>
-            <button id="playful-toggle" aria-label="Toggle Playful Mode" class="theme-toggle-btn">
-                🎨
-            </button>
-        </li>
-    </ul>
-</nav>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">bloggy blog</a>
+                <div class="nav-links">
+                    <a href="#">home</a>
+                    <a href="#">vibes</a>
+                    <a href="#">about us</a>
+                    <a href="#">spill the tea ☕</a>
+                    <a href="#">contribute</a>
+                </div>
+                <div>
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                    <button class="search-btn" id="searchBtn">🔍</button>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                </div>
+            </nav>
         </div>
     </header>
-    <main class="container main-content">
-        <section class="blog-posts">
-            <h2>Latest Articles</h2>
-            <div id="posts-list" class="posts-grid">
-                <!-- Blog post cards will be dynamically rendered here -->
+
+    <div class="search-container" id="searchContainer">
+        <button class="close-search" id="closeSearch">×</button>
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Search for posts, tags, or topics...">
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="hero animate">
+            <h1>Explore the Vibes</h1>
+            <p>Your go-to source for fresh perspectives, tech insights, and lifestyle guides with a Gen Z twist.</p>
+            <div class="featured-tags">
+                <span class="tag active">#Technology</span>
+                <span class="tag">#Lifestyle</span>
+                <span class="tag">#Tutorials</span>
+                <span class="tag">#Culture</span>
+                <span class="tag">#Wellness</span>
             </div>
         </section>
-        <aside class="sidebar">
-            <div class="about-author">
-                <h3>About This Blog</h3>
-                <p>This is a demo of an advanced frontend blog platform with Gen Z vibes.</p>
+
+        <div class="featured-post animate animate-delay-1">
+            <img src="/api/placeholder/600/400" alt="Featured post image" class="featured-post-image">
+            <div class="featured-post-content">
+                <span class="featured-badge">Featured</span>
+                <h2 class="featured-post-title"><a href="#">The Ultimate Guide to Finding Your Aesthetic in 2025</a></h2>
+                <p>Discover how to curate your personal aesthetic with this comprehensive guide. From digital presence to physical space, express your authentic self.</p>
+                <div class="post-meta">
+                    <span>By Style Guru</span>
+                    <span>05/01/2025</span>
+                </div>
+                <a href="#" class="read-more">Read Full Guide</a>
             </div>
-            <div class="categories">
-                <h3>Categories</h3>
-                <ul>
-                    <li><a href="#">Technology</a></li>
-                    <li><a href="#">Lifestyle</a></li>
-                    <li><a href="#">Tutorials</a></li>
-                </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="left-column">
+                <h2 class="section-title animate animate-delay-1">Latest Articles</h2>
+                <div class="posts-grid">
+                    <article class="post-card animate animate-delay-1">
+                        <img src="/api/placeholder/400/200" alt="Image for A Deep Dive into Something Cool" class="post-image">
+                        <div class="post-content">
+                            <h3 class="post-title"><a href="#">A Deep Dive into Something Cool</a></h3>
+                            <p class="post-excerpt">This is a brief excerpt introducing the blog post content. This should be engaging enough to make the user want to click and read more...</p>
+                            <div class="post-meta">
+                                <span>By Author Name</span>
+                                <span>27/10/2023</span>
+                            </div>
+                            <a href="#" class="read-more">read more →</a>
+                        </div>
+                    </article>
+                    
+                    <article class="post-card animate animate-delay-2">
+                        <img src="/api/placeholder/400/200" alt="Image for Exploring the Latest Trends in Technology" class="post-image">
+                        <div class="post-content">
+                            <h3 class="post-title"><a href="#">Exploring the Latest Trends in Technology</a></h3>
+                            <p class="post-excerpt">In this post, we explore the latest trends in technology that are shaping our future. From AI to blockchain, discover what's next.</p>
+                            <div class="post-meta">
+                                <span>By Tech Guru</span>
+                                <span>20/10/2023</span>
+                            </div>
+                            <a href="#" class="read-more">read more →</a>
+                        </div>
+                    </article>
+                    
+                    <article class="post-card animate animate-delay-3">
+                        <img src="/api/placeholder/400/200" alt="Image for Lifestyle Changes for a Healthier You" class="post-image">
+                        <div class="post-content">
+                            <h3 class="post-title"><a href="#">Lifestyle Changes for a Healthier You</a></h3>
+                            <p class="post-excerpt">This article discusses simple lifestyle changes that can lead to a healthier, more balanced life. Small adjustments, big impacts.</p>
+                            <div class="post-meta">
+                                <span>By Wellness Expert</span>
+                                <span>15/10/2023</span>
+                            </div>
+                            <a href="#" class="read-more">read more →</a>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="load-more-container" style="text-align: center; margin-top: 2rem;">
+                    <button class="submit-btn" id="loadMoreBtn">Load More Posts</button>
+                </div>
             </div>
-        </aside>
+            
+            <div class="right-column">
+                <div class="sidebar animate animate-delay-2">
+                    <h3>About This Blog</h3>
+                    <p>This is a demo of an advanced frontend blog platform with Gen Z vibes.</p>
+                </div>
+                
+                <div class="sidebar animate animate-delay-2">
+                    <h3>Categories</h3>
+                    <ul class="category-list">
+                        <li><a href="#">Technology <span class="category-count">12</span></a></li>
+                        <li><a href="#">Lifestyle <span class="category-count">8</span></a></li>
+                        <li><a href="#">Tutorials <span class="category-count">5</span></a></li>
+                        <li><a href="#">Culture <span class="category-count">7</span></a></li>
+                        <li><a href="#">Wellness <span class="category-count">4</span></a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar animate animate-delay-3">
+                    <h3>Subscribe</h3>
+                    <p>Stay updated with our latest posts and news!</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-btn">→</button>
+                    </form>
+                </div>
+                
+                <div class="sidebar animate animate-delay-3">
+                    <h3>Popular Tags</h3>
+                    <div class="featured-tags">
+                        <span class="tag">#Tech</span>
+                        <span class="tag">#Wellness</span>
+                        <span class="tag">#Travel</span>
+                        <span class="tag">#Food</span>
+                        <span class="tag">#DIY</span>
+                        <span class="tag">#Fashion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+
     <footer>
-        <div class="container footer-container">
-            <p>&copy; 2023 Bloggy Blog. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>bloggy blog is a modern platform for Gen Z creators and readers looking for fresh perspectives on technology, lifestyle, and culture.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">📸</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="TikTok">🎵</a>
+                        <a href="#" aria-label="YouTube">🎬</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Lifestyle</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Culture</a></li>
+                        <li><a href="#">Wellness</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter for weekly updates and exclusive content.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-btn">→</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 bloggy blog. All rights reserved.</p>
             </div>
         </div>
     </footer>
-    <script src="js/main.js"></script>
-</body>
-</html>
+
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <!-- Modal for contributing content -->
+    <div class="modal" id="contributeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Contribute to bloggy blog</h3>
+                <button class="close-modal" id="closeModal">×</button>
+            </div>
+            <form id="contributeForm">
+                <div class="form-group">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" id="name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="form-label">Post Title</label>
+                    <input type="text" id="title" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="category" class="form-label">Category</label>
+                    <select id="category" class="form-input">
+                        <option value="technology">Technology</option>
+                        <option value="lifestyle">Lifestyle</option>
+                        <option value="tutorials">Tutorials</option>
+                        <option value="culture">Culture</option>
+                        <option value="wellness">Wellness</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="content" class="form-label">Post Content</label>
+                    <textarea id="content" class="form-textarea" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Post</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">Subscription confirmed! Thank you for joining us.</div>
+
+    <script>
+        // DOM elements
+        const themeToggle = document.getElementById('themeToggle');
+        const searchBtn = document.getElementById('searchBtn');
+        const closeSearch = document.getElementById('closeSearch');
+        const searchContainer = document.getElementById('searchContainer');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        const backToTop = document.getElementById('backToTop');
+        const contributeModal = document.getElementById('contributeModal');
+        const closeModal = document.getElementById('closeModal');
+        const contributeForm = document.getElementById('contributeForm');
+        const toast = document.getElementById('toast');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const tags = document.querySelectorAll('.tag');
+        const newsletterForms = document.querySelectorAll('.newsletter-form');
+
+        // Theme toggle functionality
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            if (document.body.classList.contains('light-theme')) {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
+            themeToggle.textContent = '☀️';
+        }
+
+        // Search functionality
+        searchBtn.addEventListener('click', () => {
+            searchContainer.style.display = 'flex';
+            setTimeout(() => {
+                searchContainer.querySelector('input').focus();
+            }, 100);
+        });
+
+        closeSearch.addEventListener('click', () => {
+            searchContainer.style.display = 'none';
+        });
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '×' : '☰';
+        });
+
+        // Back to top button
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Modal functionality
+        document.querySelectorAll('a[href="#contribute"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                contributeModal.classList.add('active');
+            });
+        });
+
+        // For the contribute link in the navigation
+        document.querySelector('a[href*="contribute"]').addEventListener('click', (e) => {
+            e.preventDefault();
+            contributeModal.classList.add('active');
+        });
+
+        closeModal?.addEventListener('click', () => {
+            contributeModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        contributeModal?.addEventListener('click', (e) => {
+            if (e.target === contributeModal) {
+                contributeModal.classList.remove('active');
+            }
+        });
+
+        // Form submission
+        contributeForm?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            contributeModal.classList.remove('active');
+            showToast('Thanks for your contribution! We\'ll review it soon.');
+            contributeForm.reset();
+        });
+
+        // Newsletter subscription
+        newsletterForms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                showToast('Subscription confirmed! Thank you for joining us.');
+                form.reset();
+            });
+        });
+
+        // Toast notification function
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Tag filtering
+        tags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                tags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                showToast(`Filtering by ${tag.textContent} category`);
+                // Here you would typically filter the posts based on the selected tag
+            });
+        });
+
+        // Load more functionality
+        loadMoreBtn.addEventListener('click', () => {
+            // Simulating loading more posts
+            loadMoreBtn.textContent = 'Loading...';
+            setTimeout(() => {
+                const postsGrid = document.querySelector('.posts-grid');
+                // Clone the first 3 posts
+                const existingPosts = document.querySelectorAll('.post-card');
+                const newPosts = [];
+                
+                for (let i = 0; i < 3; i++) {
+                    if (existingPosts[i]) {
+                        const clone = existingPosts
