@@ -779,11 +779,11 @@
             <nav>
                 <a href="#" class="logo">bloggy blog</a>
                 <div class="nav-links">
-                    <a href="#">home</a>
-                    <a href="#">vibes</a>
-                    <a href="#">about us</a>
-                    <a href="#">spill the tea ☕</a>
-                    <a href="#">contribute</a>
+                    <li><a href="../index.html">home</a></li>
+                    <li><a href="../pages/vibes.html">vibes</a></li>
+                    <li><a href="../pages/about.html">about us</a></li>
+                    <li><a href="../pages/spill-the-tea.html">spill the tea ☕</a></li>
+                    <li><a href="../pages/contribute.html">contribute</a></li>
                 </div>
                 <div>
                     <button class="theme-toggle" id="themeToggle">🌙</button>
@@ -1147,15 +1147,30 @@
         });
 
         // Load more functionality
-        loadMoreBtn.addEventListener('click', () => {
-            // Simulating loading more posts
-            loadMoreBtn.textContent = 'Loading...';
-            setTimeout(() => {
-                const postsGrid = document.querySelector('.posts-grid');
-                // Clone the first 3 posts
-                const existingPosts = document.querySelectorAll('.post-card');
-                const newPosts = [];
-                
-                for (let i = 0; i < 3; i++) {
-                    if (existingPosts[i]) {
-                        const clone = existingPosts
+                loadMoreBtn.addEventListener('click', () => {
+                    // Simulating loading more posts
+                    loadMoreBtn.textContent = 'Loading...';
+                    setTimeout(() => {
+                        const postsGrid = document.querySelector('.posts-grid');
+                        // Clone the first 3 posts
+                        const existingPosts = document.querySelectorAll('.post-card');
+                        const newPosts = [];
+                        
+                        for (let i = 0; i < 3; i++) {
+                            if (existingPosts[i]) {
+                                const clone = existingPosts[i].cloneNode(true);
+                                // Change some content to make it look different
+                                const title = clone.querySelector('.post-title a');
+                                title.textContent = 'New Post ' + (i + 1) + ': ' + title.textContent;
+                                newPosts.push(clone);
+                            }
+                        }
+                        
+                        newPosts.forEach(post => {
+                            postsGrid.appendChild(post);
+                        });
+                        
+                        loadMoreBtn.textContent = 'Load More Posts';
+                        showToast('New posts loaded!');
+                    }, 1000);
+                });
