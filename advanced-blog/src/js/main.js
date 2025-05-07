@@ -1,108 +1,168 @@
-// Main JavaScript for Bloggy Blog
-
-// Load posts and authors data
-async function fetchJSON(path) {
-    const response = await fetch(path);
-    if (!response.ok) {
-        throw new Error(`Failed to load ${path}: ${response.statusText}`);
-    }
-    return await response.json();
-}
-
-// Render a single post card
-function createPostCard(post) {
-    const card = document.createElement('article');
-    card.className = 'post-card';
-    card.innerHTML = `
-        <img src="${post.image}" alt="Image for ${post.title}" class="post-image" />
-        <div class="post-content">
-            <h3 class="post-title">${post.title}</h3>
-            <p class="post-excerpt">${post.content}</p>
-            <p class="post-meta">By <span class="post-author">${post.author}</span> on <time datetime="${post.date}">${new Date(post.date).toLocaleDateString()}</time></p>
-            <a href="pages/post.html?id=${post.id}" class="read-more">read more →</a>
-        </div>
-    `;
-    return card;
-}
-
-// Render posts list including user contributed posts
-async function renderPosts() {
-    try {
-        const postsList = document.getElementById('posts-list');
-        postsList.innerHTML = '';
-
-        // Load user contributed posts from localStorage
-        const userPosts = JSON.parse(localStorage.getItem('userPosts')) || [];
-
-        // Load default posts from JSON
-        const defaultPosts = await fetchJSON('data/posts.json');
-
-        // Combine user posts and default posts, user posts first
-        const allPosts = [...userPosts, ...defaultPosts];
-
-        allPosts.forEach(post => {
-            const postCard = createPostCard(post);
-            postsList.appendChild(postCard);
-        });
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-// Theme toggling logic
-function applyTheme(theme) {
-    document.body.classList.remove('light-mode', 'playful-mode');
-    if (theme === 'light') {
-        document.body.classList.add('light-mode');
-    } else if (theme === 'playful') {
-        document.body.classList.add('playful-mode');
-    }
-    localStorage.setItem('theme', theme);
-}
-
-function toggleTheme() {
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    if (currentTheme === 'dark') {
-        applyTheme('light');
-    } else {
-        applyTheme('dark');
-    }
-}
-
-function togglePlayful() {
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    if (currentTheme === 'playful') {
-        applyTheme('dark');
-    } else {
-        applyTheme('playful');
-    }
-}
-
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    applyTheme(savedTheme);
-
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const playfulToggleBtn = document.getElementById('playful-toggle');
-
-    themeToggleBtn.addEventListener('click', () => {
-        toggleTheme();
-    });
-
-    playfulToggleBtn.addEventListener('click', () => {
-        togglePlayful();
-    });
-}
-
-// Initialize everything on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-    renderPosts();
-    initTheme();
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
 
-    // Welcome overlay enter button
-    const welcomeOverlay = document.getElementById('welcomeOverlay');
-    const enterBtn = welcomeOverlay.querySelector('.enter-btn');
-    enterBtn.addEventListener('click', () => {
-        welcomeOverlay.style.display = 'none';
+    // Theme toggle click handler
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // Update theme
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        // Update toggle button icon
+        themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        
+        // Add animation class
+        document.body.classList.add('theme-transition');
+        setTimeout(() => {
+            document.body.classList.remove('theme-transition');
+        }, 300);
+    });
+
+    // DOM elements
+    const searchBtn = document.getElementById('searchBtn');
+    const closeSearch = document.getElementById('closeSearch');
+    const searchContainer = document.getElementById('searchContainer');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.querySelector('.nav-links');
+    const backToTop = document.getElementById('backToTop');
+    const contributeModal = document.getElementById('contributeModal');
+    const closeModal = document.getElementById('closeModal');
+    const contributeForm = document.getElementById('contributeForm');
+    const toast = document.getElementById('toast');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const tags = document.querySelectorAll('.tag');
+    const newsletterForms = document.querySelectorAll('.newsletter-form');
+
+    // Search functionality
+    searchBtn.addEventListener('click', () => {
+        searchContainer.style.display = 'flex';
+        setTimeout(() => {
+            searchContainer.querySelector('input').focus();
+        }, 100);
+    });
+
+    closeSearch.addEventListener('click', () => {
+        searchContainer.style.display = 'none';
+    });
+
+    // Mobile menu toggle
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '×' : '☰';
+    });
+
+    // Back to top button
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Modal functionality
+    document.querySelectorAll('a[href="#contribute"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            contributeModal.classList.add('active');
+        });
+    });
+
+    // For the contribute link in the navigation
+    document.querySelector('a[href*="contribute"]').addEventListener('click', (e) => {
+        e.preventDefault();
+        contributeModal.classList.add('active');
+    });
+
+    closeModal?.addEventListener('click', () => {
+        contributeModal.classList.remove('active');
+    });
+
+    // Close modal when clicking outside
+    contributeModal?.addEventListener('click', (e) => {
+        if (e.target === contributeModal) {
+            contributeModal.classList.remove('active');
+        }
+    });
+
+    // Form submission
+    contributeForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        contributeModal.classList.remove('active');
+        showToast('Thanks for your contribution! We\'ll review it soon.');
+        contributeForm.reset();
+    });
+
+    // Newsletter subscription
+    newsletterForms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast('Subscription confirmed! Thank you for joining us.');
+            form.reset();
+        });
+    });
+
+    // Toast notification function
+    function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    // Tag filtering
+    tags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            tags.forEach(t => t.classList.remove('active'));
+            tag.classList.add('active');
+            showToast(`Filtering by ${tag.textContent} category`);
+            // Here you would typically filter the posts based on the selected tag
+        });
+    });
+
+    // Load more functionality
+    loadMoreBtn.addEventListener('click', () => {
+        // Simulating loading more posts
+        loadMoreBtn.textContent = 'Loading...';
+        setTimeout(() => {
+            const postsGrid = document.querySelector('.posts-grid');
+            // Clone the first 3 posts
+            const existingPosts = document.querySelectorAll('.post-card');
+            const newPosts = [];
+            
+            for (let i = 0; i < 3; i++) {
+                if (existingPosts[i]) {
+                    const clone = existingPosts[i].cloneNode(true);
+                    // Change some content to make it look different
+                    const title = clone.querySelector('.post-title a');
+                    title.textContent = 'New Post ' + (i + 1) + ': ' + title.textContent;
+                    newPosts.push(clone);
+                }
+            }
+            
+            newPosts.forEach(post => {
+                postsGrid.appendChild(post);
+            });
+            
+            loadMoreBtn.textContent = 'Load More Posts';
+            showToast('New posts loaded!');
+        }, 1000);
     });
 });
